@@ -81,10 +81,11 @@ class HangedMan {
     }
 
     displayEndMessage(message) {
-        let div = document.createElement("div");
+        let div = document.createElement("p");
         div.innerHTML = message;
         document.querySelector(".div-input-word").appendChild(div);
         document.querySelector('input').style.display = 'none';
+        document.querySelector('.button').style.display = 'inline-block';
     }
 
     playAnimation(value) {
@@ -102,7 +103,7 @@ class HangedMan {
     }
 }
 
-const player = new HangedMan();
+let player = new HangedMan();
 
 player.getRandomWord().then(word => {
     document.querySelector('#random-word').innerHTML = word;
@@ -113,3 +114,7 @@ document.querySelector('input[type="text"]').addEventListener('keydown', (event)
     const pattern = /^[a-zA-Z]+$/;
     pattern.test(key) ? (keyCode === 13 && player.replaceLetter(value.toUpperCase())) : event.preventDefault();
 });
+
+document.querySelector('.button').addEventListener('click', () => {
+    window.location.reload()
+})
