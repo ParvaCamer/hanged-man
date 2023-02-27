@@ -1,0 +1,52 @@
+html,
+body {
+    height: 100vh;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    #background {
+        position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -1;
+    }
+
+    .container {
+        width: 80%;
+        text-align: center;
+
+        .div-infos-word {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 150px;
+            text-align: left;
+
+            aside {
+                display: none;
+            }
+
+            #remaining-guess,
+            #random-word {
+                text-align: center;
+            }
+        }
+
+        .div-input-word {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+
+            .display-answer {
+
+            }
+        }
+    }
+}

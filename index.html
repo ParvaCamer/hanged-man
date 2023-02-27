@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hanged Man</title>
+    <link rel="stylesheet/less" type="text/css" href="style.less" />
+    <script src="https://cdn.jsdelivr.net/npm/less"></script>
+</head>
+
+<body>
+    <video autoplay muted loop id="background">
+        <source src="./asset/background.mp4" type="video/mp4">
+    </video>
+    <div class="container">
+        <h1>Hanged Man</h1>
+        <div class="div-hanged-man">
+            <img>
+            image
+        </div>
+        <div class="div-infos-word">
+            <div class="infos-for-user">
+                <aside>
+                    <h3>Wrong letters :</h3>
+                    <p id="wrong-letters"></p>
+                </aside>
+                <div class="div-remaining">
+                    <h3>Remaining chance</h3>
+                    <p id="remaining-guess"></p>
+                </div>
+            </div>
+            <div class="div-guess">
+                <h3>Guess the word</h3>
+                <p id="random-word">Word to guess</p>
+            </div>
+        </div>
+        <div class="div-input-word">
+            <label for="input">Write a letter</label>
+            <input type="text" placeholder="write" maxlength="1" minlength="1">
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
