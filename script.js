@@ -4,6 +4,7 @@ class HangedMan {
         this.hiddenWord = hiddenWord;
         this.nbTrials = 7;
         this.alreadyProposed = [];
+        this.canWrite = false;
     }
 
     async getRandomWord() {
@@ -40,9 +41,10 @@ class HangedMan {
         }
     }
 
-
     checkAlreadyProposed(value) {
         if (this.alreadyProposed.length === 0) {
+            document.querySelector('#death').src = "./asset/death-2.png";
+            document.querySelector('#death').style.width = "150px";
             this.displayLetters(value);
             document.querySelector('aside').style.display = 'block';
         } else {
@@ -51,7 +53,11 @@ class HangedMan {
                     return
                 }
             }
+            this.playAnimation(true);
             this.displayLetters(value);
+            setTimeout(() => {
+                this.playAnimation(false);
+            }, 1000);
         }
     }
 
@@ -64,6 +70,9 @@ class HangedMan {
 
     checkEndGame() {
         if (this.nbTrials == 0) {
+            document.querySelector('#death').style.opacity = 0;
+            document.querySelector('#human').src = './asset/dead-human.png';
+            document.querySelector('#human').style.width = '300px';
             this.displayEndMessage(`You lost ! The word was ${this.wordToFind}.`)
         } else if (this.wordToFind === this.hiddenWord) {
             this.displayEndMessage(`You win the game !`)
@@ -74,15 +83,27 @@ class HangedMan {
         let div = document.createElement("div");
         div.innerHTML = message;
         document.querySelector(".div-input-word").appendChild(div);
-        document.querySelector('label').style.display = 'none';
         document.querySelector('input').style.display = 'none';
+    }
+
+    playAnimation(value) {
+        if (value) {
+            this.canWrite = true;
+            document.querySelector('input[type=text]').disabled = this.canWrite;
+            document.querySelector('#death').classList.remove('paused');
+            document.querySelector('#death').classList.add('run');
+        } else {
+            this.canWrite = false;
+            document.querySelector('input[type=text]').disabled = this.canWrite;
+            document.querySelector('#death').classList.remove('run');
+            document.querySelector('#death').classList.add('paused');
+        }
     }
 }
 
 const player = new HangedMan();
 
 player.getRandomWord().then(word => {
-    console.log(word);
     document.querySelector('#random-word').innerHTML = word;
 })
 

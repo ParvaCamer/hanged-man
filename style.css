@@ -1,0 +1,101 @@
+html,
+body,
+.container {
+  height: 100vh;
+  margin: 0;
+  font-family: 'Oswald', sans-serif;
+  font-family: 'Roboto Slab', serif;
+  font-family: 'Ubuntu', sans-serif;
+}
+body #background {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -1;
+}
+body .container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-around;
+}
+body .container .container-game {
+  width: auto;
+  text-align: center;
+  border-radius: 40px 0;
+  background-color: rgba(195, 195, 195, 0.38);
+  margin: 50px;
+  padding: 50px 100px;
+}
+body .container .container-game h1 {
+  margin: 0;
+}
+body .container .container-game .div-infos-word {
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 150px;
+  text-align: left;
+}
+body .container .container-game .div-infos-word aside {
+  display: none;
+  position: absolute;
+  left: 100px;
+  background-color: rgba(195, 195, 195, 0.38);
+  border-radius: 40px 0;
+  padding: 15px 50px;
+}
+body .container .container-game .div-infos-word #remaining-guess,
+body .container .container-game .div-infos-word #random-word {
+  text-align: center;
+}
+body .container .container-game input {
+  width: 80px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.688);
+  border: none;
+  text-align: center;
+}
+body .container .container-game input:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px hsla(0, 0%, 83%, 0.8);
+}
+body .container .div-hanged-man {
+  width: 100%;
+  height: 300px;
+}
+body .container .div-hanged-man img {
+  width: 200px;
+  display: inline-block;
+}
+body .container .div-hanged-man img#human {
+  position: absolute;
+  right: 100px;
+}
+body .container .div-hanged-man img#death {
+  position: absolute;
+  left: 50px;
+  animation: slide-right 6s ease-in;
+}
+body .container .div-hanged-man img#death.paused {
+  animation-play-state: paused;
+}
+body .container .div-hanged-man img#death.run {
+  animation-play-state: running;
+}
+@keyframes slide-right {
+  0% {
+    left: 50px;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    left: 1200px;
+    opacity: 0;
+  }
+}
