@@ -35,6 +35,11 @@ body {
             margin: 50px;
             padding: 50px 100px;
 
+            @media screen and (max-width: 768px) {
+                padding: 25px;
+                margin: 20px 0;
+            }
+
             h1 {
                 margin: 0;
             }
@@ -47,13 +52,30 @@ body {
                 gap: 150px;
                 text-align: left;
 
+                @media screen and (max-width: 768px) {
+                    gap: 10px;
+                    flex-direction: column;
+                }
+
                 aside {
-                    display: none;
+                    opacity: 0;
                     position: absolute;
                     left: 100px;
                     background-color: @background;
                     border-radius: @border;
                     padding: 15px 50px;
+
+                    &.display-aside {
+                        animation: opacity .5s ease-out;
+                    }
+
+                    @media screen and (max-width: 1200px) {
+                        position: relative;
+                        left: 0;
+                        padding: 0;
+                        background-color: unset;
+                        border-radius: 0;
+                    }
                 }
 
                 #remaining-guess,
@@ -85,15 +107,23 @@ body {
                 width: 200px;
                 display: inline-block;
 
+                @media screen and (max-width: 768px) {
+                    width: 150px;
+                }
+
                 &#human {
                     position: absolute;
                     right: 100px;
+
+                    @media screen and (max-width: 768px) {
+                        right: -20px;
+                    }
                 }
 
                 &#death {
                     position: absolute;
                     left: 50px;
-                    animation: slide-right 6s ease-in;
+                    animation: slide-right-desktop 6s ease-in forwards;
 
                     &.paused {
                         animation-play-state: paused;
@@ -102,23 +132,59 @@ body {
                     &.run {
                         animation-play-state: running;
                     }
+
+                    @media screen and (max-width: 768px) {
+                        left: 10px;
+                        animation-name: slide-right-mobile;
+                    }
                 }
             }
         }
     }
 }
 
-@keyframes slide-right {
+@keyframes slide-right-desktop {
     0% {
         left: 50px;
     }
+    70% {
+        opacity: 1;
+    }
+    90% {
+        opacity: .6;
+    }
+    100% {
+        left: 1400px;
+        opacity: 0;
+    }
+}
 
+@keyframes slide-right-mobile {
+    0% {
+        left: 10px;
+    }
     90% {
         opacity: 1;
     }
+    100% {
+        left: 260px;
+        opacity: 0;
+    }
+}
+
+@keyframes opacity {
+    0% {
+        display: none;
+        opacity: 0;
+    }
+
+    1% {
+        display: block;
+        opacity: 0;
+    }
 
     100% {
-        left: 1200px;
-        opacity: 0;
+        display: block;
+        opacity: 1;
     }
 }

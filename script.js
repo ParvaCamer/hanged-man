@@ -44,9 +44,10 @@ class HangedMan {
     checkAlreadyProposed(value) {
         if (this.alreadyProposed.length === 0) {
             document.querySelector('#death').src = "./asset/death-2.png";
-            document.querySelector('#death').style.width = "150px";
+            //document.querySelector('#death').style.width = "150px";
             this.displayLetters(value);
-            document.querySelector('aside').style.display = 'block';
+            document.querySelector('aside').classList.add('display-aside');
+            document.querySelector('aside').style.opacity = 1;
         } else {
             for (const letter in this.alreadyProposed) {
                 if (this.alreadyProposed[letter] === value) {
