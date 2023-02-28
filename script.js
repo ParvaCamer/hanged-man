@@ -8,7 +8,7 @@ class HangedMan {
     }
 
     async getRandomWord() {
-        const response = await fetch('../data.json');
+        const response = await fetch('https://parvacamer.github.io/hanged-man/data.json');
         const responseData = await response.json();
         let wordArrays = Object.values(responseData)
         let randomArray = Math.floor(Math.random() * wordArrays.length);
